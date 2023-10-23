@@ -7,5 +7,5 @@ import { Component } from '@angular/core'
 })
 export class AppComponent {
   title = 'SWICAP-PROJECT'
-  date: Date | undefined;
+  date: Date | undefined
 }
