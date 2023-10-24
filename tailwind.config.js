@@ -9,8 +9,9 @@ module.exports = {
       colors: {
         primary: '#FFF', // Aquí defines el color "primary"
         primary_text: '#EEE',
-        secondary: '#003485'
-      },
+        secondary: '#003485',
+        teatiry_text:'#034CAE'
+      }
   },
   plugins: [],
   corePlugins: {

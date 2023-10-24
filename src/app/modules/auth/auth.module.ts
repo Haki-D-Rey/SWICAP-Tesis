@@ -4,8 +4,14 @@ import { AuthRoutingModule } from './auth-routing.module'
 import { LoginComponent } from './components/login/login.component'
 import { RegisterComponent } from './components/register/register.component'
 
+//PRIMENG MODULE
+import { RadioButtonModule } from 'primeng/radiobutton';
+
+//MODULE
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
-  imports: [CommonModule, AuthRoutingModule]
+  imports: [CommonModule, AuthRoutingModule, RadioButtonModule, FormsModule, ReactiveFormsModule ]
 })
 export class AuthModule {}
