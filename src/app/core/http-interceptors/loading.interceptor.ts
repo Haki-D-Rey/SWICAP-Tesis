@@ -3,7 +3,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable } from 'rxjs'
 import { tap } from 'rxjs'
 
-import { SpinnerLoadingService } from 'src/app/services/spinner-loading.service'
+import { SpinnerLoadingService } from 'src/app/shared/services/spinner-loading.service'
 
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {

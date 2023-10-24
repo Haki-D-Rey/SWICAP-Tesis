@@ -10,12 +10,10 @@ import { ButtonModule } from 'primeng/button'
 import { CalendarModule } from 'primeng/calendar'
 import { DashboardComponent } from './modules/dashboard/dashboard.component'
 import { AuthComponent } from './modules/auth/auth.component'
-import { SpinnerLoadingService } from './services/spinner-loading.service'
-import { HTTP_INTERCEPTORS } from '@angular/common/http'
-import { LoadingInterceptor } from './core/http-interceptors/loading.interceptor'
 
 //Modulos
-import { SharedModule } from 'primeng/api'
+import { SharedModule } from './shared/shared.module'
+
 @NgModule({
   declarations: [AppComponent, DashboardComponent, AuthComponent],
   imports: [
@@ -26,14 +24,7 @@ import { SharedModule } from 'primeng/api'
     BrowserAnimationsModule,
     SharedModule
   ],
-  providers: [
-    SpinnerLoadingService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoadingInterceptor,
-      multi: true
-    }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

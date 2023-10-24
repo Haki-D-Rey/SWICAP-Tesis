@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { SpinnerLoadingService } from './services/spinner-loading.service'
+import { SpinnerLoadingService } from './shared/services/spinner-loading.service'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,6 +8,7 @@ import { SpinnerLoadingService } from './services/spinner-loading.service'
 export class AppComponent {
   title = 'SWICAP-PROJECT'
   date: Date | undefined
-
-  constructor(SpinnerLoadingService: SpinnerLoadingService) {}
+  constructor(public SpinnerLoadingService: SpinnerLoadingService) {
+    SpinnerLoadingService.hide();
+  }
 }

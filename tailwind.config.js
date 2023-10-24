@@ -3,16 +3,13 @@ module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {
-      'button': {
-        'padding': '.5rem 1rem',
-        'borderRadius': '.25rem',
-        'fontSize': '1rem',
-        'fontWeight': '600',
-        'color': '#FFF',
-        'backgroundColor': '#FF5733',
-        '&:hover': {
-          'backgroundColor': '#E8480A',
-        },
+      backgroundImage: {
+        'custom-gradient': 'linear-gradient(325deg, #ffffff 0, #d7e8ff 50%, #89aad3 100%)',
+      },
+      colors: {
+        primary: '#FFF', // Aquí defines el color "primary"
+        primary_text: '#EEE',
+        secondary: '#003485'
       },
   },
   plugins: [],
