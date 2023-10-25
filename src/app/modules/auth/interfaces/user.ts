@@ -1,7 +1,13 @@
 
 export interface IRequestUserLoginData {
-  TipoAutoridad: string;
-  NombreUsuario: string;
-  Contrasenia: string;
-  recordar?: boolean;
+  type?: string;
+  username: string;
+  password: string;
+  isRemenber?: boolean;
+}
+
+
+export  interface IResponseUserLoginData{
+  nombreUsuario: string;
+  token: string | null;
 }

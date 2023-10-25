@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core' // Importa OnInit
-import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { RadioButtonClickEvent } from 'primeng/radiobutton'
-import { IRequestUserLoginData } from '../../interfaces/user'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { IRequestUserLoginData, IResponseUserLoginData } from '../../interfaces/user'
+import { AuthService } from '../../services/auth.service'
 
 @Component({
   selector: 'app-login',
@@ -19,12 +19,12 @@ export class LoginComponent implements OnInit {
     { name: 'Vicedecano', key: 'VD' }
   ]
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
     this.loginForm = this.formBuilder.group({
-      TipoAutoridad: ['', Validators.compose([Validators.required])],
-      NombreUsuario: ['', Validators.compose([Validators.required])],
-      Contrasenia: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
-      recordar: [false, Validators.compose([Validators.nullValidator])]
+      type: ['', Validators.compose([Validators.required])],
+      username: ['', Validators.compose([Validators.required])],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
+      remenber: [false, Validators.compose([Validators.nullValidator])]
     })
 
     console.log(this.loginForm)
@@ -37,6 +37,14 @@ export class LoginComponent implements OnInit {
   onSubmitLogin(Form: FormGroup) {
     this.loading = true
 
+    const data: IRequestUserLoginData = {
+      username: Form.value["username"],
+      password: Form.value["password"],
+    }
+
+    this.authService.login(data).subscribe((response: IResponseUserLoginData) => {
+      console.log(response);
+    });
 
     console.log(Form)
     try {

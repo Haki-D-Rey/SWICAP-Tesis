@@ -14,6 +14,7 @@ import { ButtonModule } from 'primeng/button'
 
 //MODULE
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
@@ -26,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     InputTextModule,
     PasswordModule,
     CheckboxModule,
-    ButtonModule
+    ButtonModule,
+    HttpClientModule
   ]
 })
 export class AuthModule {}
