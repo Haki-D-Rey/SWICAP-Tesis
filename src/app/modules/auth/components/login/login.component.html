@@ -1,36 +1,95 @@
 <div class="flex flex-col justify-center items-center border-2 border-blue-800 h-[90vh]">
-  <div
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmitLogin(loginForm)"
     class="w-[700px] h-[700px] border-2 border-red-600 flex flex-col gap-10 justify-start items-center"
   >
     <div class="mt-2 w-[128px]">
       <img src="assets/media/logoUni.png" alt="UNI-LOGO" width="162px" height="100px" />
     </div>
     <div
-      class="bg-primary shadow-[ 0px_0px_10px_0px_rgba(0, 0, 0, 0.20)] rounded-xl border-2 flex flex-col w-[80%] h-[80%] justify-start items-center gap-5 text-xl"
+      class="bg-primary shadow-[0px_0px_10px_0px_rgba(0, 0, 0, 0.20)] rounded-xl border-2 flex flex-col w-[80%] h-[80%] justify-start items-center gap-7 text-xl"
     >
       <p class="text-secondary font-bold mt-10">Ingresa tus credenciales</p>
 
-      <!--LISTADO DE RADIOS BUTTON PARA EL TIPO DE INICIO DE SESION -->
+      <!-- LISTADO DE RADIO BUTTONS PARA EL TIPO DE INICIO DE SESIÓN -->
       <div class="flex flex-row gap-5">
         <div *ngFor="let radio of RadioOptions" class="field-checkbox flex flex-row gap-10">
-          <div class="border-[1px] border-[#ABABAB] rounded-lg py-[10px] px-[15px] flex justify-center items-center gap-2">
+          <div
+            class="border-[1px] border-[#ABABAB] rounded-lg py-[10px] px-[15px] flex justify-center items-center gap-2"
+          >
             <p-radioButton
               [inputId]="radio.key"
-              name="radio"
-              [value]="radio"
-              [(ngModel)]="selectedCategory"
-              (onClick)="ObtenerValorRadioButton($event)"
+              name="TipoAutoridad"
+              [value]="radio.key"
+              formControlName="TipoAutoridad"
             ></p-radioButton>
-            <label [for]="radio.key" class="ml-1 text-base" [ngClass]="{'text-teatiry_text font-medium': radio.key === selectedCategory.key}">{{ radio.name }}</label>
+            <label
+              [for]="radio.key"
+              class="ml-1 text-base"
+              [ngClass]="{
+                'text-teatiry_text font-medium': radio.key === loginForm.get('TipoAutoridad')?.value
+              }"
+              >{{ radio.name }}</label
+            >
           </div>
         </div>
       </div>
 
-      <!--CAMPOS DE FORMULARIO PARA EL INICIO DE SESION-->
-      <div>
+      <!-- CAMPOS DE FORMULARIO PARA EL INICIO DE SESIÓN -->
+      <div class="w-[90%] flex flex-col gap-5">
+        <div class="w-full flex flex-col gap-5">
+          <span class="p-float-label w-full">
+            <input pInputText id="nombreUsuario" formControlName="NombreUsuario" class="w-full" />
+            <label htmlFor="nombreUsuario" class="text-base">Usuario</label>
+          </span>
+          <span class="p-float-label w-full">
+            <p-password
+              id="contrasenia"
+              formControlName="Contrasenia"
+              [toggleMask]="true"
+              class="w-full inline-grid"
+              inputStyleClass="w-full"
+            ></p-password>
+            <label for="contrasenia" class="text-base">Contraseña</label>
+          </span>
+        </div>
+        <!-- CAMPOS DE FORMULARIO SECUNDARIOS -->
+        <div class="flex flex-row w-full justify-between text-base">
+          <div class="flex align-items-center gap-2">
+            <p-checkbox name="recordar" [binary]="true" formControlName="recordar"></p-checkbox>
+            <label for="recordar">Recuérdame</label>
+          </div>
 
+          <a
+            href="#"
+            [routerLink]=""
+            class="no-underline text-teatiry_text font-medium hover:underline hover:cursor-pointer"
+            >¿Olvidaste tu contraseña?</a
+          >
+        </div>
       </div>
 
+      <!-- BOTÓN DE INICIO DE SESIÓN -->
+      <button
+        pButton
+        label="Iniciar Sesión"
+        [loading]="loading"
+        type="submit"
+        class="bg-secondary rounded-md py-2 px-6 border-none cursor-pointer text-center text-lg text-primary"
+      ></button>
+
+      <hr class="bg-[#ABABABCC] h-[2px] w-[90%]" />
+      <div class="w-[90%] flex flex-col gap-3">
+        <span class="text-secondary text-lg"
+          >¿Problemas? Consulta a <a href="" class="underline">soporte técnico</a> o al
+          <a href="" class="underline">22784984</a></span
+        >
+        <span class="text-secondary text-lg text-center"
+          >No tienes cuenta
+          <a href="#" class="underline" [routerLink]="['/auth/register']">Registate Ya</a></span
+        >
+      </div>
     </div>
-  </div>
+  </form>
 </div>
