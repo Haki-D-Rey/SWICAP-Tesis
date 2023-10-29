@@ -9,14 +9,19 @@ import { AppComponent } from './app.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ButtonModule } from 'primeng/button'
 import { CalendarModule } from 'primeng/calendar'
+
+// Component
 import { DashboardComponent } from './modules/dashboard/dashboard.component'
 import { AuthComponent } from './modules/auth/auth.component'
+import { RecoveryComponent } from './modules/recovery/recovery.component';
+
 
 //Modulos
-import { SharedModule } from './shared/shared.module'
+import { SharedModule } from './shared/shared.module';
+import { RecoveryModule } from './modules/recovery/recovery.module';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, AuthComponent],
+  declarations: [AppComponent, DashboardComponent, AuthComponent, RecoveryComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,7 +29,8 @@ import { SharedModule } from './shared/shared.module'
     CalendarModule,
     BrowserAnimationsModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    RecoveryModule
   ],
   providers: [],
   bootstrap: [AppComponent]

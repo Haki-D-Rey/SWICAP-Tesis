@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router'
 const routes: Routes = [
   {
     path: '', // Ruta principal (redirige a 'dashboard')
-    redirectTo: 'dashboard',
+    redirectTo: 'auth/login',
     pathMatch: 'full'
   },
   {
@@ -13,7 +13,17 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule),
+    data: {
+      animation: ['authPage']
+    }
+  },
+  {
+    path: 'recovery',
+    loadChildren: () => import('./modules/recovery/recovery.module').then(m => m.RecoveryModule),
+    data: {
+      animation: ['recoveryPage']
+    }
   },
   {
     path: '**', // Ruta de redirección para rutas no reconocidas
